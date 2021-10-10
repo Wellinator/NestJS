@@ -1,4 +1,4 @@
-import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable, Options, UnprocessableEntityException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UserRole } from './users-roles.enum';
@@ -18,4 +18,8 @@ export class UsersService {
           return this.userRepository.createUser(createUserDto, UserRole.ADMIN);
         }
       }
+
+    async getAll(){
+      return this.userRepository.find();
+    }
 }
